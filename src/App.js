@@ -1,32 +1,24 @@
-
 const App = () => {
+    //На фоне происходят какие-то асинхронные работы
 
-  const x = 2;
+    const getData = () => {
+        return fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Something went wrong")
+                }
+                return response.json();
+            }).then((users) => {
+                console.log(users.filter(el => el.id % 2 !== 0 && el.name[0] === 'C'))
+            }).catch((reportError) => {
+                console.log(reportError)
+            })
+    }
 
-  const y = 4;
-
-  setTimeout(() => {
-    alert(y)
-  }, 5000)
-
-  alert('Please wait a while')
-
-  setTimeout(() => {
-    alert(x+y)
-  }, 3000)
-
-  alert(x)
-
-  return ("Hello World!");
+    getData();
 }
 
 export default App;
 
 
-//Ассинхронность данного кода объясняется следующим образом
-//идет обработка кода сверху вниз, но некоторые элементы выполняются позже
-//такие элементы как setTimeout потому как у них есть временной ограничитель
-//эти элементы попадают в Call Stack но из-за его особенности он попадает в web apis
-//там обрабатывается а затем попадает в очередь Call queue и обратно в Call Stack
-//в случае со слушалкой к примеру с выводом информации при клике
-//информация будет попадать в Call queue при каждом нажатии и передаватся в Call Stack
+
