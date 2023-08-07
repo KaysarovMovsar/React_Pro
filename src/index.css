@@ -12,14 +12,6 @@ code {
     monospace;
 }
 
-.element {
-  max-width: 300px;
-  list-style: none;
-  background-color: aquamarine;
-  padding: 5px;
-  margin: 5px auto;
-}
-
 h2 {
   margin: 5px auto;
   width: 110px;
@@ -38,21 +30,39 @@ h1 {
   margin-top: 200px;
 }
 
-.item {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  padding: 5px;
-  background-color: olive;
-}
-
 .list {
   padding: 0;
 }
 
 .Wrapper {
   display: block;
-  width: 300px;
+  width: 400px;
   margin: 0 auto;
 }
+
+.todo_wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: aquamarine;
+}
+
+button {
+  background-color: gold;
+  border-radius: 15px;
+  border: 2px solid orange;
+  padding: 5px;
+}
+
+.button {
+  padding-right: 8px;
+}
+
+.checkbox {
+  padding-left: 5px;
+}
+
+
 

@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {loadTodos} from "./action";
 import * as PropTypes from "prop-types";
 import ReactLoading from 'react-loading';
+import {Header} from "./Header";
 
 
 const App = () => {
@@ -25,13 +26,21 @@ const App = () => {
 
     return (
         <div className= "Wrapper">
-            <h1>Todo List</h1>
+            <Header />
                 {
                     loading ? <Preloader/> : (
                         todos.map((item) => {
                             return (
-                                <div className="item">
-                                    {item.name}
+                                <div className="todo_wrapper">
+                                    <div className="checkbox">
+                                        <input type="checkbox"/>
+                                    </div>
+                                    <div className="todo">
+                                        {item.name}
+                                    </div>
+                                    <div className="button">
+                                        <button>delete</button>
+                                    </div>
                                 </div>
                             )
                         })
