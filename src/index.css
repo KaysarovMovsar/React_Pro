@@ -25,7 +25,34 @@ h2 {
   width: 110px;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  margin-top: 200px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: olive;
+}
+
 .list {
   padding: 0;
+}
+
+.Wrapper {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
 }
 
