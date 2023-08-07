@@ -20,17 +20,18 @@ const App = () => {
     }, [])
 
     return (
-        <>
+        <ul className="list">
+            <h2>To-do list</h2>
             {loading ? (
                 <div>
                     Loading: please wait
                 </div>
             ) : data.map((item) => {
                 return (
-                    <div key={item.id}>{item.email}</div>
+                        <li className="element" key={item.id}>{item.email}</li>
                 )
             })}
-        </>
+        </ul>
 
     )
 }
