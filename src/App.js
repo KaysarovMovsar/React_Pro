@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {loadTodos} from "./action";
+import {loadTodos, RemoveTodo} from "./action";
 import * as PropTypes from "prop-types";
 import ReactLoading from 'react-loading';
 import {Header} from "./Header";
@@ -15,6 +15,11 @@ const App = () => {
     useEffect(() => {
         dispatch(loadTodos())
     }, [])
+
+    const HandleClickDelete = (id) => {
+        dispatch(RemoveTodo(id))
+    }
+
 
     const Preloader = () => {
         return (
@@ -39,7 +44,7 @@ const App = () => {
                                         {item.name}
                                     </div>
                                     <div className="button">
-                                        <button>delete</button>
+                                        <button onClick={() => HandleClickDelete(item.id)}>delete</button>
                                     </div>
                                 </div>
                             )
