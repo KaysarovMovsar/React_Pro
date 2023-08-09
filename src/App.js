@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {loadTodos, RemoveTodo} from "./action";
+import {CheckTodo, loadTodos, RemoveTodo} from "./action";
 import * as PropTypes from "prop-types";
 import ReactLoading from 'react-loading';
 import {Header} from "./Header";
@@ -18,6 +18,10 @@ const App = () => {
 
     const HandleClickDelete = (id) => {
         dispatch(RemoveTodo(id))
+    }
+
+    const CheckOnChange = (id, completed) => {
+        dispatch(CheckTodo(id, completed))
     }
 
 
@@ -38,10 +42,13 @@ const App = () => {
                             return (
                                 <div className="todo_wrapper">
                                     <div className="checkbox">
-                                        <input type="checkbox"/>
+                                        <input type="checkbox"
+                                               checked={item.completed}
+                                               onChange={() => CheckOnChange(item.id, item.completed)}
+                                        />
                                     </div>
                                     <div className="todo">
-                                        {item.name}
+                                        {item.title}
                                     </div>
                                     <div className="button">
                                         <button onClick={() => HandleClickDelete(item.id)}>delete</button>
