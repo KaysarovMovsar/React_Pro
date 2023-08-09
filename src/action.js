@@ -4,7 +4,7 @@ export const loadTodos = () => {
     return (dispatch) => {
         dispatch({ type: "load/todos/start"})
 
-        fetch("https://jsonplaceholder.typicode.com/users")
+        fetch("https://jsonplaceholder.typicode.com/todos")
             .then((response) => response.json())
             .then((json) => {
                 dispatch({
@@ -19,9 +19,10 @@ export const RemoveTodo = (id) => {
     return (dispatch) => {
         dispatch({type: "delete/todo/start"})
 
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {method: "DELETE"})
+        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,
+            {method: "DELETE"})
             .then((response) => response.json())
-            .then((json) => {
+            .then(() => {
                 dispatch({
                     type: "delete/todo/fulfilled",
                     payload: id
@@ -29,4 +30,28 @@ export const RemoveTodo = (id) => {
             })
     }
 }
+
+export const CheckTodo = (id, completed) => {
+    return (dispatch) => {
+        dispatch({type: "check/load/start"})
+
+        fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {method: "PATCH",
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    completed: !completed
+                })}
+            )
+            .then((response) => response.json())
+            .then(() => {
+                dispatch({
+                    type: "check/load/fulfilled",
+                    payload: id
+                })
+            })
+    }
+}
+
+
 
