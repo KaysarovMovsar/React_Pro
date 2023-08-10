@@ -17,7 +17,7 @@ export const loadTodos = () => {
 
 export const RemoveTodo = (id) => {
     return (dispatch) => {
-        dispatch({type: "delete/todo/start"})
+        dispatch({type: "delete/todo/start", payload: id})
 
         fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,
             {method: "DELETE"})
