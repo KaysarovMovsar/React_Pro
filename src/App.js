@@ -51,7 +51,8 @@ const App = () => {
                                         {item.title}
                                     </div>
                                     <div className="button">
-                                        <button onClick={() => HandleClickDelete(item.id)}>delete</button>
+                                        <button onClick={() => HandleClickDelete(item.id)}
+                                        disabled={item.deleting}>delete</button>
                                     </div>
                                 </div>
                             )
