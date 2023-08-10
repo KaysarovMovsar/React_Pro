@@ -33,7 +33,7 @@ export const RemoveTodo = (id) => {
 
 export const CheckTodo = (id, completed) => {
     return (dispatch) => {
-        dispatch({type: "check/load/start"})
+        dispatch({type: "check/load/start", payload: id})
 
         fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {method: "PATCH",
                 headers: {

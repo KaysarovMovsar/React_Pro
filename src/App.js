@@ -42,10 +42,17 @@ const App = () => {
                             return (
                                 <div className="todo_wrapper">
                                     <div className="checkbox">
-                                        <input type="checkbox"
-                                               checked={item.completed}
-                                               onChange={() => CheckOnChange(item.id, item.completed)}
-                                        />
+                                        {
+                                            item.checking ? (
+                                                <ReactLoading type={'spin'} color={'red'} height={'20%'} width={'20%'} />
+                                            ) : (
+                                                <input type="checkbox"
+                                                       checked={item.completed}
+                                                       onChange={() => CheckOnChange(item.id, item.completed)}
+                                                />
+                                            )
+                                        }
+
                                     </div>
                                     <div className="todo">
                                         {item.title}
