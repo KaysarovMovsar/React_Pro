@@ -47,14 +47,29 @@ const reducer = (state = initialState, action) => {
                 todos: state.todos.filter((item) => item.id !== action.payload)
             }
 
+        case "check/load/start":
+            return {
+                ...state,
+                todos: state.todos.map(item => {
+                    if (item.id === action.payload) {
+                        return {
+                            ...item,
+                            checking: true,
+                        }
+                    }
+                    return item
+                })
+            }
+
         case "check/load/fulfilled":
             return {
                 ...state,
                 todos: state.todos.map((todo) => {
-                    if(action.payload === todo.id) {
+                    if (action.payload === todo.id) {
                         return {
                             ...todo,
-                            completed: !todo.completed
+                            completed: !todo.completed,
+                            checking: false
                         }
                     }
                     return todo
