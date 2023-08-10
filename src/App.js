@@ -1,13 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CheckTodo, loadTodos, RemoveTodo} from "./action";
+import {CheckTodo, loadTodos, RemoveTodo} from "./redux/action";
 import * as PropTypes from "prop-types";
 import ReactLoading from 'react-loading';
 import {Header} from "./Header";
+import {Todos} from "./components/Todos";
 
 
 const App = () => {
-    const todos = useSelector((state) => state.todos)
     const loading = useSelector((state) => state.loading)
     //На фоне происходят какие-то асинхронные работы
     const dispatch = useDispatch()
@@ -38,32 +38,10 @@ const App = () => {
             <Header />
                 {
                     loading ? <Preloader/> : (
-                        todos.map((item) => {
-                            return (
-                                <div className="todo_wrapper">
-                                    <div className="checkbox">
-                                        {
-                                            item.checking ? (
-                                                <ReactLoading type={'spin'} color={'red'} height={'20%'} width={'20%'} />
-                                            ) : (
-                                                <input type="checkbox"
-                                                       checked={item.completed}
-                                                       onChange={() => CheckOnChange(item.id, item.completed)}
-                                                />
-                                            )
-                                        }
-
-                                    </div>
-                                    <div className="todo">
-                                        {item.title}
-                                    </div>
-                                    <div className="button">
-                                        <button onClick={() => HandleClickDelete(item.id)}
-                                        disabled={item.deleting}>delete</button>
-                                    </div>
-                                </div>
-                            )
-                        })
+                        <Todos
+                            HandleClickDelete={HandleClickDelete}
+                            CheckOnChange={CheckOnChange}
+                        />
                     )}
         </div>
     )
