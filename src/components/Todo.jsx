@@ -6,6 +6,7 @@ export const Todo = ({deleting, checking, completed, id, title, CheckOnChange, H
     return <>
         <div className="todo_wrapper">
             <Checking
+                checking={checking}
                 title={title}
                 id={id}
                 completed={completed}
