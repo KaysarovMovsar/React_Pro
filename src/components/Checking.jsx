@@ -5,7 +5,7 @@ export const Checking = ({checking, completed, id, CheckOnChange}) => {
         <div className="checkbox">
             {
                 checking ? (
-                    <ReactLoading type={'spin'} color={'red'} height={'20%'} width={'20%'} />
+                    <ReactLoading type={'spin'} color={'red'} height={ 20 } width={ 20 } />
                 ) : (
                     <input type="checkbox"
                            checked={completed}

@@ -1,4 +1,3 @@
-import ReactLoading from "react-loading";
 import {useSelector} from "react-redux";
 import {Todo} from "./Todo";
 
@@ -10,6 +9,7 @@ export const Todos = ({HandleClickDelete, CheckOnChange}) => {
                 todos.map((item) => {
                     return (
                         <Todo
+                            checking={item.checking}
                             title={item.title}
                             id={item.id}
                             completed={item.completed}
