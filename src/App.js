@@ -9,6 +9,7 @@ import {Todos} from "./components/Todos";
 
 const App = () => {
     const loading = useSelector((state) => state.loading)
+    const loadingUsers = useSelector((state) => state.loadingUsers)
     //На фоне происходят какие-то асинхронные работы
     const dispatch = useDispatch()
 
@@ -38,7 +39,7 @@ const App = () => {
         <div className= "Wrapper">
             <Header />
                 {
-                    loading ? <Preloader/> : (
+                    loading || loadingUsers ? <Preloader/> : (
                         <Todos
                             HandleClickDelete={HandleClickDelete}
                             CheckOnChange={CheckOnChange}
