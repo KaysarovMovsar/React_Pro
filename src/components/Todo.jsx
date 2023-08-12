@@ -2,7 +2,8 @@ import ReactLoading from "react-loading";
 import {Checking} from "./Checking";
 import {Button} from "./Button";
 
-export const Todo = ({deleting, checking, completed, id, title, CheckOnChange, HandleClickDelete}) => {
+export const Todo = ({deleting, checking, completed, id, title, CheckOnChange, HandleClickDelete, users, userId}) => {
+    const user = users.filter((item) => item.id === userId)
     return <>
         <div className="todo_wrapper">
             <Checking
@@ -14,6 +15,8 @@ export const Todo = ({deleting, checking, completed, id, title, CheckOnChange, H
             />
             <div className="todo">
                 {title}
+                <br/>
+                (email:{user[0]?.email})
             </div>
             <Button
                 id={id}

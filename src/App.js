@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CheckTodo, loadTodos, RemoveTodo} from "./redux/action";
+import {CheckTodo, loadTodos, loadUsers, RemoveTodo} from "./redux/action";
 import * as PropTypes from "prop-types";
 import ReactLoading from 'react-loading';
 import {Header} from "./Header";
@@ -14,6 +14,7 @@ const App = () => {
 
     useEffect(() => {
         dispatch(loadTodos())
+        dispatch(loadUsers())
     }, [])
 
     const HandleClickDelete = (id) => {
